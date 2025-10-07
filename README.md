@@ -57,7 +57,7 @@ SIH25236/
 ###  Prerequisites
 
 Make sure you have:
-- **LLVM (>= 14)** with `clang`, `opt`, `llc`, `llvm-link`
+- **LLVM (= 14)** with `clang`, `opt`, `llc`, `llvm-link`
 - **CMake** (>= 3.10)
 - **Python 3**
 - **g++** or **clang++** (for linking)
