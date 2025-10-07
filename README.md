@@ -1,5 +1,4 @@
 
-```markdown
 # 🔒 LLVM-Based Object File Obfuscator
 
 > **A cross-platform software obfuscation tool** built using LLVM that takes C/C++ source code, compiles it into LLVM IR, applies custom obfuscation passes, and generates highly obfuscated binaries for Windows and Linux.
