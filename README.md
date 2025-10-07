@@ -1,11 +1,11 @@
 
-# 🔒 LLVM-Based Object File Obfuscator
+# LLVM-Based Object File Obfuscator
 
 > **A cross-platform software obfuscation tool** built using LLVM that takes C/C++ source code, compiles it into LLVM IR, applies custom obfuscation passes, and generates highly obfuscated binaries for Windows and Linux.
 
 ---
 
-## 🧠 Background
+##  Background
 
 Software obfuscation has become a crucial technique in modern software engineering — especially where **intellectual property protection**, **reverse engineering prevention**, and **software piracy mitigation** are essential.
 
@@ -13,25 +13,25 @@ This project leverages **LLVM (Low-Level Virtual Machine)** — a modular compil
 
 ---
 
-## 🧩 Key Features
+##  Key Features
 
-✅ Obfuscates binaries for **Windows and Linux**  
-✅ Adjustable **levels of obfuscation** via command-line parameters  
-✅ Generates **detailed obfuscation report**  
-✅ Supports:
+Obfuscates binaries for **Windows and Linux**  
+Adjustable **levels of obfuscation** via command-line parameters  
+Generates **detailed obfuscation report**  
+Supports:
 - Control flow flattening
 - Bogus code insertion
 - String encryption
 - Fake loop insertion
 - NOP padding
 
-✅ Produces:
+Produces:
 - **Obfuscated binary**
 - **Comprehensive log report**
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 
@@ -52,9 +52,9 @@ llvm-obfuscator/
 
 ---
 
-## ⚙️ Installation & Setup
+## Installation & Setup
 
-### 🧱 Prerequisites
+###  Prerequisites
 
 Make sure you have:
 - **LLVM (>= 14)** with `clang`, `opt`, `llc`, `llvm-link`
@@ -65,7 +65,7 @@ Make sure you have:
 
 ---
 
-### 🧑‍💻 Setup on Linux / macOS
+### Setup on Linux / macOS
 
 ```bash
 # 1) Install toolchain
@@ -108,7 +108,7 @@ python3 obfuscator.py ../examples/hello.c \
 
 ---
 
-### 🪟 Setup on Windows
+###  Setup on Windows
 
 **Requirements:**
 
@@ -145,7 +145,7 @@ python obfuscator.py ..\examples\hello.c ^
 
 ---
 
-## 🧾 Output
+##  Output
 
 ### 1. **Obfuscated Binary**
 
@@ -166,7 +166,7 @@ A detailed report `obfuscation_report.txt` is generated containing:
 
 ---
 
-## 🧪 Example
+## Example
 
 ### Input:
 
@@ -203,7 +203,7 @@ Report file: report.json
 
 ---
 
-## 📊 Example Report
+## Example Report
 
 ```
 ===== OBFUSCATION REPORT =====
@@ -221,7 +221,7 @@ Output File Size: 37 KB
 
 ---
 
-## 🧰 Command-Line Options
+## Command-Line Options
 
 | Option                     | Description                              |
 | -------------------------- | ---------------------------------------- |
@@ -235,34 +235,7 @@ Output File Size: 37 KB
 
 ---
 
-## 🧤 Troubleshooting
 
-### 🧩 “cannot load library obfpass.so”
-
-* Ensure the plugin path is correct
-* Make sure the plugin is built with the same LLVM version
-* Use absolute paths to `.so` / `.dll` files
-
-### ⚙️ “opt: command not found”
-
-* Add LLVM binaries to your PATH:
-
-  ```bash
-  export PATH=/usr/lib/llvm-14/bin:$PATH
-  ```
-
-### 🚫 “Architecture mismatch”
-
-* Build everything with the same architecture (`x64` for both LLVM and the plugin).
-
----
-
-## 🏗️ Future Enhancements
-
-* Add GUI for parameter configuration
-* Add dynamic control-flow obfuscation
-* Add support for multiple obfuscation passes in one run
-* Integration with CI/CD for secure builds
 
 ---
 
