@@ -35,7 +35,7 @@ Produces:
 
 ```
 
-llvm-obfuscator/
+SIH25236/
 ├── llvm_pass/              # LLVM obfuscation pass source code
 │   ├── CMakeLists.txt
 │   └── ObfuscationPass.cpp
@@ -79,8 +79,8 @@ export PATH="/opt/homebrew/opt/llvm/bin:$PATH"        # Apple Silicon
 # or: export PATH="/usr/local/opt/llvm/bin:$PATH"     # Intel Macs
 
 # 2) Clone repository
-git clone https://github.com/<your-username>/llvm-obfuscator.git
-cd llvm-obfuscator
+git clone https://github.com/lavanayakhosla/SIH25236.git
+cd SIH25236
 
 # 3) Build the LLVM pass (update LLVM_DIR for your install)
 mkdir -p build && cd build
@@ -124,7 +124,7 @@ python3 obfuscator.py ../examples/hello.c \
 $env:LLVM_DIR="C:\Program Files\LLVM\lib\cmake\llvm"
 $env:Path="C:\Program Files\LLVM\bin;" + $env:Path
 
-cd llvm-obfuscator
+cd SIH25236
 mkdir build; cd build
 cmake -G "Visual Studio 17 2022" -A x64 -DLLVM_DIR="$env:LLVM_DIR" ..
 cmake --build . --config Release
