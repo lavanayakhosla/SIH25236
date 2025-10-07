@@ -68,25 +68,41 @@ Make sure you have:
 ### 🧑‍💻 Setup on Linux / macOS
 
 ```bash
-# 1. Install dependencies
+# 1) Install toolchain
+# Linux (Debian/Ubuntu):
 sudo apt update
 sudo apt install -y clang llvm cmake make python3 python3-pip
 
-# 2. Clone repository
+# macOS (Homebrew):
+brew install llvm cmake
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"        # Apple Silicon
+# or: export PATH="/usr/local/opt/llvm/bin:$PATH"     # Intel Macs
+
+# 2) Clone repository
 git clone https://github.com/<your-username>/llvm-obfuscator.git
 cd llvm-obfuscator
 
-# 3. Build LLVM pass
-mkdir build && cd build
+# 3) Build the LLVM pass (update LLVM_DIR for your install)
+mkdir -p build && cd build
+# Linux example:
 cmake -DLLVM_DIR=/usr/lib/llvm-14/lib/cmake/llvm ..
-make
+# macOS example (Homebrew LLVM 20+):
+# cmake -DLLVM_DIR=$(llvm-config --cmakedir) ..
+cmake --build . -j$(nproc 2>/dev/null || sysctl -n hw.ncpu)
 
-# 4. Run obfuscator
+# 4) Install Python driver deps
 cd ../driver
 python3 -m pip install -r requirements.txt
-python3 obfuscator.py ../examples/hello.c --out hello_obf --pass ../build/llvm_pass/obfpass.so --bogus-blocks 2 --string-level 2 --insert-nops 5
 
-# 5. Run output binary
+# 5) Run obfuscator on example
+python3 obfuscator.py ../examples/hello.c \
+  --out hello_obf \
+  --pass ../build/llvm_pass/obfpass.so \
+  --profile medium \
+  --cycles 2 \
+  --flatten
+
+# 6) Run output binary
 ./hello_obf
 ````
 
@@ -117,8 +133,14 @@ Copy-Item -Path ".\llvm_pass\Release\obfpass.dll" -Destination "..\driver\obfpas
 cd ..\driver
 
 python -m pip install -r requirements.txt
-python obfuscator.py ..\examples\hello.c --out hello_obf.exe --pass .\obfpass.dll --bogus-blocks 2 --string-level 2 --insert-nops 5 --target windows
-.\hello_obf.exe
+python obfuscator.py ..\examples\hello.c ^
+  --out hello_obf.exe ^
+  --pass .\obfpass.dll ^
+  --profile medium ^
+  --cycles 2 ^
+  --flatten ^
+  --target windows
+.\n+hello_obf.exe
 ```
 
 ---
@@ -159,7 +181,11 @@ int main() {
 ### Run:
 
 ```bash
-python3 obfuscator.py ../examples/hello.c --out hello_obf --bogus-blocks 3 --string-level 2
+python3 obfuscator.py ../examples/hello.c \
+  --out hello_obf \
+  --pass ../build/llvm_pass/obfpass.so \
+  --bogus-blocks 3 --string-level 2 --insert-nops 5 \
+  --cycles 2 --profile medium --flatten
 ```
 
 ### Output:
@@ -172,7 +198,7 @@ python3 obfuscator.py ../examples/hello.c --out hello_obf --bogus-blocks 3 --str
 [INFO] Obfuscation completed successfully.
 
 Output file: hello_obf
-Report file: obfuscation_report.txt
+Report file: report.json
 ```
 
 ---

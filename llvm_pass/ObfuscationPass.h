@@ -15,6 +15,7 @@ struct ObfuscationOptions {
   unsigned bogusBlocksPerFunction = 1;
   unsigned stringEncryptLevel = 1;
   unsigned insertNops = 0;
+  bool enableFlatten = false;
 };
 }
 

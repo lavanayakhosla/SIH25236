@@ -1,0 +1,8 @@
+{
+	"InstallScripts" : 
+	[
+		"/Users/lavanayakhosla/Desktop/GATE PYQs/llvm-obfuscator/build/cmake_install.cmake",
+		"/Users/lavanayakhosla/Desktop/GATE PYQs/llvm-obfuscator/build/llvm_pass/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

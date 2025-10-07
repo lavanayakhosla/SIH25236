@@ -1,0 +1,30 @@
+{
+  "timestamp": "2025-10-07T08:31:38.538910Z",
+  "input_parameters": {
+    "bogus_blocks": 5,
+    "string_level": 3,
+    "insert_nops": 16,
+    "target": "linux",
+    "flatten": true
+  },
+  "output": {
+    "file": "hello_obf",
+    "size_bytes": 50070
+  },
+  "obfuscation_stats": {
+    "bogus_blocks": 2,
+    "strings": 0,
+    "nops": 0
+  },
+  "obfuscation_cycles": 2,
+  "methods_applied": [
+    "control_flow_bogus",
+    "string_obfuscation",
+    "nop_insertion",
+    "control_flow_flatten"
+  ],
+  "tools": {
+    "clang": "Homebrew clang version 20.1.7",
+    "opt": "Homebrew LLVM version 20.1.7"
+  }
+}
